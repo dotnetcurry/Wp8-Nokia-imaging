@@ -1,0 +1,108 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Imagefilta.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <Style TargetType="Image">
+            <Setter Property="Width" Value="80"></Setter>
+            <Setter Property="Height" Value="80"></Setter>
+        </Style>
+
+        <Style TargetType="Image" x:Key="img">
+            <Setter Property="Width" Value="400"></Setter>
+            <Setter Property="Height" Value="400"></Setter>
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="HeaderSection" Grid.Row="0" Margin="0,0,0,28" Background="DarkBlue">
+            <TextBlock HorizontalAlignment="Center" Text="ImageFilta" 
+                       FontSize="40" FontFamily="Segoe Script" 
+                       FontStyle="Italic"  />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0" Background="White">
+            <Image VerticalAlignment="Top" Margin="10,5,10,0" x:Name="imgOrigin" Style="{StaticResource img}" Stretch="UniformToFill"/>
+            <ScrollViewer VerticalAlignment="Bottom" Margin="0,0,0,-7" Height="155" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <StackPanel Orientation="Horizontal" Height="140" x:Name="stkfilters" Background="DarkBlue">
+                    <StackPanel>
+                        <Image x:Name="Img1" Tap="Img1_Tap" Stretch="UniformToFill" Margin="5,20,0,0" />
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Antique"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="Img2" Tap="Img2_Tap" Stretch="UniformToFill" Margin="5,20,0,0" />
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Flip"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="Img3" Tap="Img3_Tap" Stretch="UniformToFill" Margin="5,20,0,0"/>
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Warp"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="Img4" Tap="Img4_Tap" Stretch="UniformToFill" Margin="5,20,0,0"/>
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Sketch"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="Img5" Tap="Img5_Tap" Stretch="UniformToFill" Margin="5,20,0,0"/>
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Sepia"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="Img6" Tap="Img6_Tap" Stretch="UniformToFill" Margin="5,20,0,0" />
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="MagicPen"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="Img7" Tap="Img7_Tap" Stretch="UniformToFill" Margin="5,20,0,0" />
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Solarize"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="Img8" Tap="Img8_Tap" Stretch="UniformToFill" Margin="5,20,0,0"/>
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Negative"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="Img9" Tap="Img9_Tap" Stretch="UniformToFill" Margin="5,20,0,0"/>
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="TempNTint"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="Img10" Tap="Img10_Tap" Stretch="UniformToFill" Margin="5,20,0,0"/>
+                        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Stamp"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar >
+        <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="True" IsVisible="True" BackgroundColor="Gray">
+
+            <shell:ApplicationBarIconButton x:Name="mnuOpen" IconUri="/Images/Open.png" Text="album" Click="mnuOpen_Click"/>
+            <shell:ApplicationBarIconButton x:Name="mnuCamera" IconUri="/Images/Camera.png" Text="camera" Click="mnuCamera_Click"/>
+            <shell:ApplicationBarIconButton x:Name="mnuSave" IconUri="/Images/Save.png" Text="save" Click="mnuSave_Click"/>
+            <shell:ApplicationBarIconButton x:Name="mnuShare" IconUri="/Images/Share.png" Text="share" Click="mnuShare_Click"/>
+
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Send Feedback" />
+                <shell:ApplicationBarMenuItem Text="About Us" />
+            </shell:ApplicationBar.MenuItems>
+
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
